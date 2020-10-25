@@ -9,8 +9,6 @@ You are the owner of the component this functionality belongs to and are respons
 
 ### Coding review resolution
 **It took me around 60-70 minutes to analyze code and write this review.**
-**It might be better to create git repository on github and create real PR with comments and notes, but I decided to not 
-expose this challenge to the web.**
 
 This PR is not safe to go into production, as here are no unit or functional tests provided, and there are some mistakes 
 where made that breaks program in some cases.  
@@ -57,7 +55,7 @@ class to several classes with one area of responsibility for each of them.
 implementations will allow us to isolate this switch-case structure.
 - Next, we can get rid of switch-case structure in new Factory mentioned above. PHP ability to use variable as class 
 reference allow us to use aliases of providers as parts of names of Repository classes with implementation of 
-RepositoryInterface. So that we will follow then the Open-Closed Principle. With new provider, we can simply create 
+RepositoryInterface. So that we will follow then the Open-Closed Principle. With a new provider, we can simply create 
 a new Repository class.
 - We should hide library for HTTP requests under Facade. This gives us and opportunity to do not use all this complexity 
 of third-party library with no need in it.
@@ -88,10 +86,10 @@ and refactor this code himself.
 Refactor the code to meet best practices and modern coding standards.
 
 
-### Notes about refactoring
-**It took me 2 hours to refactor code (write from scratch) and cover it with tests.** 
+### Notes
+**It took me 2 hours to refactor code (write from scratch will be a more correct definition) and cover it with tests.** 
 **You need PHP 7.4 to run this. Although, run `composer install` inside project folder if you want to run and modify 
-`index.php` or run `tests`**
+`index.php` or run `tests`.**
 - I assumed, that in and out params (and types) are fixed, and didn't change them.
 - As those endpoints for bank and insurance-company doesn't work. As you mentioned in the letter back, some developers 
 "create working endpoints to mock them with some valid response data". I added some endpoints to test as well.
@@ -100,4 +98,8 @@ able to catch all exceptions, add improve logging of errors (I added some simple
 custom working endpoints forces us to do too many assumptions. On the other hand, code provided to refactor, makes me 
 think that we need to return response in any way, even with empty response from endpoints.
 - This solution is a light one. There might be another solution, with Domain, DTOs, some more interfaces and so on 
-(close to DDD), if we assume, that in and out params can be changed. But in this case code becomes more complicated.
+(close to DDD), if we assume, that in and out params can be changed. But in this case code becomes more complicated. For
+ example, there might be ProviderCollection of Provider Entities, and each of this Entities may contain parameters such 
+ as Provider alias, Provider name, Provider link, Provider post parameters if any. So that Factory will change a little.
+ Although there is the place to bring Price Entity and Price Collection to the scene, and they will be realated to 
+ Provider Entity, as Root Entity.
