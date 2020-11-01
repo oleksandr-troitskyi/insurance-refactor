@@ -2,16 +2,16 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use InsuranceNew\Insurance;
+use Insurance\Insurance;
 
-$allowedProviders = new \InsuranceNew\Entities\AllowedProviders();
-$logService = new \InsuranceNew\Services\LogService();
+$allowedProviders = new \Insurance\Entities\AllowedProviders();
+$logService = new \Insurance\Services\LogService();
 $insurance = new Insurance(
-    new \InsuranceNew\Validators\ProvidersValidator($allowedProviders),
+    new \Insurance\Validators\ProvidersValidator($allowedProviders),
     $allowedProviders,
-    new \InsuranceNew\Factories\ProviderPriceRepositoryFactory($logService),
+    new \Insurance\Factories\ProviderPriceRepositoryFactory($logService),
     $logService
 );
-$quote = $insurance->quote(['bank']);
+$quote = $insurance->quote([]);
 
 var_dump($quote);
