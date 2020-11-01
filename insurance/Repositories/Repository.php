@@ -12,5 +12,4 @@ abstract class Repository
     {
         $this->logService = $logService;
     }
-
 }

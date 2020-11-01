@@ -3,7 +3,6 @@
 namespace Insurance\Repositories;
 
 use Insurance\Facades\RequestFacade;
-use Insurance\Services\LogServiceInterface;
 
 class InsuranceCompanyProviderPriceRepository extends Repository implements ProviderPriceRepositoryInterface
 {

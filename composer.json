@@ -7,6 +7,8 @@
   },
   "require": {
     "php": "^7.4",
-    "phpunit/phpunit": "^9.4"
+    "phpunit/phpunit": "^9.4",
+    "ext-curl": "*",
+    "ext-json": "*"
   }
 }
